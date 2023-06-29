@@ -1,10 +1,28 @@
-const PORT =    3500;
-const path = require('path');
-const jsonServer = require('json-server');
-const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, 'db.json'));
-const middlewares = jsonServer.defaults();
-server.use(middlewares);
-server.use(jsonServer.bodyParser);
-server.use('/', router);
-server.listen(PORT, () => console.log(`JSON Server is running on port ${PORT}`));
+const express=require("express");
+const connection=require('./config/db.js');
+const app=express();
+app.use(express.json())
+
+const {ProductRoutes} =require("../BackEnd/Routes/Product.Routes.js")
+
+
+app.use("/",ProductRoutes)
+
+
+
+
+
+
+
+
+
+
+
+app.listen(3500,async()=>{
+   try{
+    await connection;
+    console.log('server is running on 3500')
+   }catch(err){
+    console.log('something  wrong in the server')
+   }
+})
