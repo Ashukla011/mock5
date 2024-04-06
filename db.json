@@ -2,7 +2,7 @@
 {
   "metrics": [
     {
-      "year": 2022,
+      "year": "2022",
       "category": "food",
       "sales": {
         "total": 1200000,
@@ -74,7 +74,7 @@
       ]
     },
     {
-      "year": 2023,
+      "year": "2023",
       "category": "food",
       "sales": {
         "total": 1500000,
@@ -146,7 +146,7 @@
       ]
     },
     {
-      "year": 2024,
+      "year": "2024",
       "category": "food",
       "sales": {
         "total": 1700000,
