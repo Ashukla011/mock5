@@ -1,14 +1,24 @@
-const PORT =  3000;
-const path = require('path');
-const jsonServer = require('json-server');
-const server = jsonServer.create();
-const router = jsonServer.router(path.join(__dirname, 'db.json'));
-const middlewares = jsonServer.defaults();
-server.use(middlewares);
-server.use(jsonServer.bodyParser);
-server.use('/api', router);
-server.listen(PORT, () => console.log(`JSON Server is running on port ${PORT}`));
+const http= require('http')
+const fs=require('fs')
+const express = require("express")
+const app = express()
+const {KfcMenuRoute} = require("./routes/KfcMenu.routes")
+const cors = require("cors")
+const {connection} = require("./config/db")
+const { authRoute } = require('./routes/UserAuthRoutes')
+app.use(express.json())
+ require("dotenv").config()
+app.use(cors())
 
 
-
-
+app.use("/kfc",KfcMenuRoute)
+app.use("/auth",authRoute)
+let PORT = process.env.port || 3500
+app.listen(PORT , async()=>{
+   try{
+    await connection,
+    console.log(`Server is running on the port ${PORT}`)
+   }catch(error){
+    console.log(error)
+   }
+});
